@@ -1,0 +1,33 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h5 class="mb-4"style="color: #000;">Client List </h5>
+                <div class="table-responsive">
+                    <% if(detailsindex!=null) { %>
+                        <table class="table">
+                        <tr style="color: #000;font-size: 17px;">
+                            <th style="display: none;">ID</th> 
+                            <th>Name</th>
+                            <th>Station</th>
+                            <th>Delivery</th>
+                            <th>Rate</th>
+                            <th>Pipes</th>
+                            <!-- <th>Referral</th>  -->
+                        </tr>
+                        <% detailsindex.forEach(function(item){ %>
+                        <tr>
+                            <td style="display: none;"><%= item.id%></td> 
+                            <td><%= item.name%></td>
+                            <td><%= item.station %></td>
+                            <td><%= item.delivery%></td>
+                            <td><%= item.rate%></td>
+                            <td><%= item.pipes%></td>
+                            <!-- <td><%= item.referral%></td>         -->
+                        </tr>
+                        <% }) %>
+                        </table>
+                        <% } %>
+                </div>
+            </div>
+        </div>
