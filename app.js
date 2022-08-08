@@ -21,6 +21,7 @@ app.use(cors());
 
 
 
+//routes
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(upload.array())
@@ -31,11 +32,15 @@ app.set("view engine", "ejs")
 app.get("/index.ejs",auth, (req, res) => res.render("index",{detailsindex:null}))
 app.get("/Cuestomer.ejs",auth, (req, res) => res.render("Cuestomer"))
 app.get("/form.ejs",auth, (req, res) => res.render("form"))
+
+
 app.get("/table.ejs",auth, (req, res) => res.render("table",{details:null}))
 app.get("/orderform.ejs",auth,(req, res) => res.render("orderform",{dropdownVals:null,uniqueid}))
 app.get("/Existingtable.ejs",auth,(req, res) => res.render("Existingtable",{details:null}))
 app.get("/orderall/:oid",auth,(req,res) => res.render("orderall",{detailss:null}))
 app.get("/Orderall.ejs",auth, (req, res) => res.render("Orderall",{detailss:null}))
+
+
 
 
 
