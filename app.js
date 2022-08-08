@@ -34,7 +34,7 @@ app.get("/form.ejs",auth, (req, res) => res.render("form"))
 app.get("/table.ejs",auth, (req, res) => res.render("table",{details:null}))
 app.get("/orderform.ejs",auth,(req, res) => res.render("orderform",{dropdownVals:null,uniqueid}))
 app.get("/Existingtable.ejs",auth,(req, res) => res.render("Existingtable",{details:null}))
-app.get("/orderall/:oid",auth,(req,res) => res.render('orderall',{detailss:null}))
+app.get("/orderall/:oid",auth,(req,res) => res.render("orderall",{detailss:null}))
 app.get("/Orderall.ejs",auth, (req, res) => res.render("Orderall",{detailss:null}))
 
 
@@ -134,7 +134,7 @@ app.post("/register", async (req, res) => {
                 res.write('<script>window.alert("Add Successfully");window.location="/form.ejs";</script>');
             })
           } catch (err) {
-            console.log(err);
+            console.log(err);  
           }
         });
         //////orderadd
@@ -297,6 +297,11 @@ app.post("/register", async (req, res) => {
            console.log('Failed to Delete user Details: ' + err);
        }
    });
+})
+
+
+app.get("/logout", auth, function(req, res, next) {
+  
 })
 
 
