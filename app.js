@@ -7,6 +7,8 @@ const {User} = require('./model/user')
 const {Client} = require('./model/user')
 const {Order} = require('./model/user')
 const auth = require("./middleware/auth");
+const alert= require('alert');
+// alert("invalid")
 const path = require('path');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
@@ -33,7 +35,6 @@ app.get("/index.ejs",auth, (req, res) => res.render("index",{detailsindex:null})
 app.get("/Cuestomer.ejs",auth, (req, res) => res.render("Cuestomer"))
 app.get("/form.ejs",auth, (req, res) => res.render("form"))
 
-
 app.get("/table.ejs",auth, (req, res) => res.render("table",{details:null}))
 app.get("/orderform.ejs",auth,(req, res) => res.render("orderform",{dropdownVals:null,uniqueid}))
 app.get("/Existingtable.ejs",auth,(req, res) => res.render("Existingtable",{details:null}))
@@ -45,7 +46,7 @@ app.get("/Orderall.ejs",auth, (req, res) => res.render("Orderall",{detailss:null
 
 
 //register
-app.post("/register", async (req, res) => {
+app.post("/register", auth, async (req, res) => {
     try {
         const { username,  email, password } = req.body;
         if (!(email && password && username )) {
@@ -86,7 +87,7 @@ app.post("/register", async (req, res) => {
       }
     });
     //login
-    app.post("/login", async (req, res) => {
+    app.post("/",async (req, res) => {
         try {
           const { email, password } = req.body;
           if (!(email && password)) {
@@ -108,15 +109,15 @@ app.post("/register", async (req, res) => {
                 expires:new Date(Date.now() + 300000000),
                 httpOnly:true,
             })
-            res.status(200).render('index',{detailsindex:null});
+            res.redirect('/');
           }
-          res.status(400).send("Invalid Credentials");
+          res.status(400).redirect('back');
         } catch (err) {
           console.log(err);
         }
       });
     //add client
-        app.post("/add", async (req, res,next) => {
+        app.post("/add", auth, async (req, res,next) => {
          try {
              const {name,station,delivery, rate, pipes,referral } = req.body;
              if (!(name&&station&&delivery&& rate&& pipes)) {
@@ -143,7 +144,7 @@ app.post("/register", async (req, res) => {
           }
         });
         //////orderadd
-        app.post("/ad", async (req, res,next) => {
+        app.post("/ad", auth, async (req, res,next) => {
           try {
                const {oid, name, date, size, quantity, stamp,length,patta} = req.body;
                if (!(name && date && size && quantity && stamp && length && patta)) {
@@ -172,7 +173,7 @@ app.post("/register", async (req, res) => {
            }
          });
         //Client get
-        app.get("/getdetails", function (req, res) {   
+        app.get("/getdetails", auth, function (req, res) {   
             Client.find({}, function (err, allDetails) {
                 if (err) {
                     console.log(err);
@@ -182,15 +183,15 @@ app.post("/register", async (req, res) => {
             })
         })
         //get client index
-        app.get("/getdetailsindex", function (req, res) {   
-          Client.find({}, function (err, allDetailsindex) {
-              if (err) {
-                  console.log(err);
-              } else {
-                  res.render("index", { detailsindex: allDetailsindex })
-              }
-          })
-      })
+      //   app.get("/getdetailsindex", auth , function (req, res) {   
+      //     Client.find({}, function (err, allDetailsindex) {
+      //         if (err) {
+      //             console.log(err);
+      //         } else {
+      //             res.render("index", { detailsindex: allDetailsindex })
+      //         }
+      //     })
+      // })
       // view client list index page 
       app.get("/", auth, function (req, res) {   
         Client.find({}, function (err, allDetailsindex) {
@@ -235,7 +236,7 @@ app.post("/register", async (req, res) => {
                  if(err) {
                      return next(err)
                  }
-                 res.write('<script>window.alert("Add Successfully");window.location="/get";</script>');
+                 res.alert(alert("Add Successfully"));
              })
            } catch (err) {
              console.log(err);
@@ -304,10 +305,16 @@ app.post("/register", async (req, res) => {
    });
 })
 
-
-app.get("/logout", auth, function(req, res, next) {
-  
-})
+//logout 
+app.get("/logout",auth, (req, res) => {
+  try{
+    res.clearCookie("jwt");
+    res.render('signin')
+    console.log("logout successful");
+  }catch(err){
+    console.log(err);
+  }
+});
 
 
 //export

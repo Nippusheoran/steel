@@ -45,7 +45,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="/getdetailsindex" class="navbar-brand mx-4 mb-3">
+                <a href="/" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>RSP Steel Plant</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/getdetailsindex" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Clients</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -160,7 +160,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="/logout" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -214,14 +214,7 @@
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <div class="row">
-                                <div class="col-10">
-                                    <h5 class="mb-4"style="color: #000;">Client List </h5>
-                                </div>
-                                <div class="col-2">
-                                    <a name="" id="" class="btn btn-primary" href="/getdetailsindex" role="button">View List</a>
-                                </div>
-                            </div>
+                            <h5 class="mb-4"style="color: #000;">Client List </h5>
                             <div class="table-responsive">
                                 <% if(detailsindex!=null) { %>
                                     <table class="table">
@@ -231,7 +224,7 @@
                                         <th>Station</th>
                                         <th>Delivery</th>
                                         <th>Rate</th>
-                                        <th>Pipes</th>
+                                        <th>Pipe Type</th>
                                         <!-- <th>Referral</th>  -->
                                     </tr>
                                     <% detailsindex.forEach(function(item){ %>
