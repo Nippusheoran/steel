@@ -31,6 +31,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script>
 $(document).ready(function () {
     var order = 0;
@@ -83,7 +84,7 @@ $(document).ready(function () {
         
 
 
-        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-primary "  value="Delete"></td>';
+        cols += '<td><i type="button"class="ibtnDel btn material-icons icon-delete">delete</i></td>';
         newRow.append(cols);
         $("table.order-list").append(newRow);
         order++;
@@ -129,7 +130,7 @@ function calculateGrandTotal() {
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="/getdetailsindex" class="navbar-brand mx-4 mb-3">
+                <a href="/" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>RSP Steel Plant</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -143,7 +144,7 @@ function calculateGrandTotal() {
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/getdetailsindex" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Clients</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -260,7 +261,7 @@ function calculateGrandTotal() {
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="/logout" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -287,10 +288,10 @@ function calculateGrandTotal() {
                                     <div id="NameHelp" class="form-text">
                                     </div>
                                 <div class="mb-3">
-                                    <label for="name"  class="form-label"><H6>Client Name</H6></label>
+                                    <label for="name"   class="form-label"><H6>Client Name</H6></label>
                                     <!-- <a href="/get">dfgh</a> -->
-                                        <select type="name" name="name" class="form-control" id="name">
-                                            <option disabled selected>Name</option>
+                                        <select type="name" required name="name" class="form-control" id="name">
+                                            <option value="" disabled selected>Name</option>
                                             <% for (const i in dropdownVals) { %>
                                             <option value="<%= dropdownVals[i].name %>"> <%= dropdownVals[i].name %> 
                                             </option>
@@ -301,7 +302,7 @@ function calculateGrandTotal() {
                                     </div>
                                 <div class="mb-3">
                                     <label for="date"  class="form-label"><H6>Date</H6></label>
-                                    <input type="date" name="date" class="form-control" id="date" aria-describedby="date">
+                                    <input type="date" required name="date" class="form-control" id="date" aria-describedby="date">
                                     <div id="NameHelp" class="form-text">
                                     </div>
                                         <div>
@@ -313,22 +314,22 @@ function calculateGrandTotal() {
                                                         <td><h6>Stamp</h6></td>
                                                         <td><h6>Length</h6></td>
                                                         <td><h6>Patta</h6></td>
-                                                        <td> </td>
+                                                        <td><h6>Action</h6></td>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="col-12">
                                                     <tr>
                                                         <td class="col-sm-2">
-                                                            <select  type="dropdown"   name="size[]" class="form-control">
-                                                                <option disabled selected>size</option>
-                                                                <option >One</option>
+                                                            <select  type="dropdown" required  name="size[]" class="form-control">
+                                                                <option value="" disabled selected>size</option>
+                                                                <option  >One</option>
                                                                 <option >Two</option>
                                                                 <option >Three</option>
                                                               </select>
                                                         </td>
                                                         <td class="col-sm-2">
-                                                            <select  type="text" name="quantity[]" class="form-control">
-                                                                <option disabled selected>Quantity</option>
+                                                            <select  type="text" required name="quantity[]" class="form-control">
+                                                                <option value="" disabled selected>Quantity</option>
                                                                 <option>1</option>
                                                                 <option>2</option>
                                                                 <option>10</option>
@@ -336,23 +337,23 @@ function calculateGrandTotal() {
                                                         </td>
                                                         <td class="col-sm-2">
                                                             <select  type="text" required  name="stamp[]" class="form-control">
-                                                                <option disabled selected>Stamp</option>
+                                                                <option value="" disabled selected>Stamp</option>
                                                                 <option>One</option>
                                                                 <option>Two</option>
                                                                 <option>Three</option>
                                                               </select>
                                                         </td>
                                                         <td class="col-sm-2">
-                                                            <select  type="text" name="length[]" class="form-control">
-                                                                <option disabled selected>Length</option>
+                                                            <select  type="text" required name="length[]" class="form-control">
+                                                                <option value="" disabled selected>Length</option>
                                                                 <option>One</option>
                                                                 <option>Two</option>
                                                                 <option>Three</option>
                                                               </select>
                                                         </td>
                                                         <td class="col-sm-2">
-                                                            <select  type="text" name="patta[]" class="form-control">
-                                                                <option disabled selected>Patta</option>
+                                                            <select  type="text" required  name="patta[]" class="form-control">
+                                                                <option value="" disabled selected>Patta</option>
                                                                 <option>One</option>
                                                                 <option>Two</option>
                                                                 <option>Three</option>
@@ -360,7 +361,8 @@ function calculateGrandTotal() {
                                                         </td>
                                                        
                                                         <td colspan="5">
-                                                            <input type="button" class="btn btn-primary " id="addrow" value="Add Row" />
+                                                            <!-- <input type="button" class="btn btn-primary "  /> -->
+                                                            <i type="button" id="addrow" value="Add Row" class="btn material-icons icon-add md-48">add</i>
                                                     </tr>
                                                 </tbody>
                                             </table>

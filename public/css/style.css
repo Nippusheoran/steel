@@ -31,6 +31,7 @@
 /*** Button ***/
 .btn {
     transition: .5s;
+
     /* margin-left: 45%;
     border-radius: 3rem;
     padding-left: 25px;
@@ -293,3 +294,18 @@
 .bolded {
     font-weight: bold;
 }
+
+.icon-delete {
+    color: #EB1616;
+
+}
+.icon-add {
+    color: #EB1616;
+    
+}
+.icon-view {
+    color: rgb(2, 167, 2);
+}
+.material-icons.md-48 {
+     font-size: 30px;
+     }

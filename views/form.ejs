@@ -45,7 +45,7 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="/getdetailsindex" class="navbar-brand mx-4 mb-3">
+                <a href="/" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>RSP Steel Plant</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/getdetailsindex" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Clients</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -159,7 +159,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="/logout" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -176,31 +176,31 @@
                             <div>
                                 <div class=" container-fluid mb-3">
                                     <label for="name"  class="form-label"><H6>Name</H6></label>
-                                    <input type="name" name="name" class="form-control" id="exampleInputName"
+                                    <input type="name" required name="name" class="form-control" id="exampleInputName"
                                         aria-describedby="nameHelp">
                                     <div id="NameHelp" class="form-text">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="station" class="form-label"><H6>Station</H6></label>
-                                        <input type="station" name="station" class="form-control" id="exampleInputstation"
+                                        <label for="station"  class="form-label"><H6>Station</H6></label>
+                                        <input type="station" required name="station" class="form-control" id="exampleInputstation"
                                             aria-describedby="station">
                                         <div id="station" class="form-text">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="delivery"  class="form-label"><H6>Delivery</H6></label>
-                                            <input type="delivery" name="delivery" class="form-control" id="delivery"
+                                            <label for="delivery"   class="form-label"><H6>Delivery</H6></label>
+                                            <input type="delivery" required name="delivery" class="form-control" id="delivery"
                                                 aria-describedby="delivery">
                                             <div id="delivery" class="form-text">
                                             </div>
                                         </div>
                                 <div class="mb-3">
                                     <label for="rate"  class="form-label"><H6>Rate</H6></label>
-                                    <input type="number" name="rate" class="form-control" id="rate">
+                                    <input type="number" required name="rate" class="form-control" id="rate">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="pipe"  class="form-label"><H6>Pipes</H6></label>
-                                    <select type="pipe" name="pipes" class="form-control" id="pipe">
-                                        <option disabled selected>Pipes</option>
+                                    <label for="pipe"   class="form-label"><H6>Pipes</H6></label>
+                                    <select type="pipe" required name="pipes" class="form-control" id="pipe">
+                                        <option value="" disabled selected>Pipes</option>
                                         <option>GI Pipes</option>
                                         <option>Black Pipes</option>
                                       </select>
@@ -213,7 +213,7 @@
                                     </div>
                                 <div class="mb-3 form-check">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" onclick=return submit() class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -232,6 +232,16 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        function submit() {
+            var pipe = document.getElementById("pipe");
+            if(pipe.value == ""){
+                alert("Please select an option!")
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 
 </html>
